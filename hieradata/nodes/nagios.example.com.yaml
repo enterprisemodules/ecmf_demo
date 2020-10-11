@@ -1,0 +1,7 @@
+---
+role: ecmf::roles::monitoring
+#
+# use nagios monitoring implementation
+#
+ecmf::roles::monitoring::implementation:     ecmf::profile::monitoring::nagios
+...

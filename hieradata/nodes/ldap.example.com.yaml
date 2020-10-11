@@ -1,0 +1,7 @@
+---
+role: ecmf::roles::identity
+#
+# use ldap identity implementation
+#
+ecmf::roles::identity::implementation:     ecmf::profile::identity::ldap
+...

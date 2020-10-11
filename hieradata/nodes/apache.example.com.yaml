@@ -1,0 +1,7 @@
+---
+role: ecmf::roles::web
+#
+# use apache web implementation
+#
+ecmf::roles::web::implementation:     ecmf::profile::web::apache
+...

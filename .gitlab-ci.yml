@@ -1,0 +1,61 @@
+---
+#
+# Include the shared gitlab CI definitions
+#
+include:
+  - project: 'enterprisemodules/gitlab_ci'
+    file: 'gitlab-ci.yml'
+
+base_demo_check:
+  extends: .demo_check
+  before_script:
+    - mkdir -p site-modules/software/files
+  script:
+    - vagrant up ml-base
+  after_script:
+    - vagrant destroy ml-base --force
+
+apache_demo_check:
+  extends: .demo_check
+  before_script:
+    - mkdir -p site-modules/software/files
+  script:
+    - vagrant up ml-apache
+  after_script:
+    - vagrant destroy ml-apache --force
+
+postgres_demo_check:
+  extends: .demo_check
+  before_script:
+    - mkdir -p site-modules/software/files
+  script:
+    - vagrant up ml-postgres
+  after_script:
+    - vagrant destroy ml-postgres --force
+
+mysql_demo_check:
+  extends: .demo_check
+  before_script:
+    - mkdir -p site-modules/software/files
+  script:
+    - vagrant up ml-mysql
+  after_script:
+    - vagrant destroy ml-mysql --force
+
+zabbix_demo_check:
+  extends: .demo_check
+  before_script:
+    - mkdir -p site-modules/software/files
+  script:
+    - vagrant up ml-zabbix
+  after_script:
+    - vagrant destroy ml-zabbix --force
+
+nagios_demo_check:
+  extends: .demo_check
+  before_script:
+    - mkdir -p site-modules/software/files
+  script:
+    - vagrant up ml-nagios
+  after_script:
+    - vagrant destroy ml-nagios --force

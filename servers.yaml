@@ -1,0 +1,85 @@
+---
+#
+# The default settings for all nodes
+#
+defaults:
+  domain_name:     example.com
+  cpucount:         4
+  box:              enterprisemodules/ol-7.7-x86_64-nocm
+  virtualboxorafix: enable
+#
+# The default settings for all ML nodes
+#
+ml-defaults:
+  type:             masterless
+#
+# The default settings for all PE nodes
+#
+pe-defaults:
+  type:             pe-agent
+  puppet_master:    pemaster
+
+#
+# The settings for the Puppet Enterprise Server
+#  
+pe-pemaster:
+  public_ip:       '192.168.253.10'
+  cpucount:         2
+  ram:              3072
+  type:             pe-master
+  puppet_installer: puppet-enterprise-2019.1.0-el-7-x86_64/puppet-enterprise-installer
+ 
+#
+# All masterless nodes
+#
+# Base is a linux only server. No other functionality added
+#
+ml-base:
+  public_ip:        '10.10.10.20'
+  software_files:   []
+#
+# Apache is a web server implemented with the apache software
+#
+ml-apache:
+  public_ip:        '10.10.10.21'
+  software_files:   []
+#
+# ldap is an identity server implemented with ldap
+#
+ml-ldap:
+  public_ip:        '10.10.10.22'
+  software_files:   []
+#
+# mysql is an database server implemented with mysql
+#
+ml-mysql:
+  public_ip:        '10.10.10.23'
+  software_files:   []
+#
+# postgres is an database server implemented with postgres
+#
+ml-postgres:
+  public_ip:        '10.10.10.24'
+  software_files:   []
+#
+# nagios is an monitoring server implemented with nagios
+#
+ml-nagios:
+  public_ip:        '10.10.10.25'
+  software_files:   []
+#
+# zabbix is an monitoring server implemented with zabbix
+#
+ml-zabbix:
+  public_ip:        '10.10.10.26'
+  software_files:   []
+#
+# All PE nodes
+#
+# Base is a linux only server. No other functionality added
+#
+pe-base:
+  public_ip:        '10.10.10.20'
+  cpucount:         1
+  type:             pe-agent
+  software_files:   []

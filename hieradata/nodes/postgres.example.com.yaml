@@ -1,0 +1,7 @@
+---
+role: ecmf::roles::database
+#
+# use postgres database implementation
+#
+ecmf::roles::database::implementation:     ecmf::profile::database::postgres
+...

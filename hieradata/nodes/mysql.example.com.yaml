@@ -1,0 +1,7 @@
+---
+role: ecmf::roles::database
+#
+# use mysql database implementation
+#
+ecmf::roles::database::implementation:     ecmf::profile::database::mysql
+...

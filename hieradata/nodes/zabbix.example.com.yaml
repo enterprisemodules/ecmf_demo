@@ -1,0 +1,7 @@
+---
+role: ecmf::roles::monitoring
+#
+# use zabbix monitoring implementation
+#
+ecmf::roles::monitoring::implementation:     ecmf::profile::monitoring::zabbix
+...
