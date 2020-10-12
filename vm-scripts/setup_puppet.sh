@@ -13,9 +13,6 @@ if [ -e /vagrant/.netrc ]
 then
   cp /vagrant/.netrc ~
 fi
-mkdir ~/.ssh
-chmod 0600 ~/.ssh
-ssh-keyscan -H gitlab.com > ~/.ssh/known_hosts       
 /opt/puppetlabs/puppet/bin/r10k puppetfile install --verbose # > /dev/null # 2>&1
 
 #

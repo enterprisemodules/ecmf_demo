@@ -4,4 +4,34 @@ role: ecmf::roles::database
 # use postgres database implementation
 #
 ecmf::roles::database::implementation:     ecmf::profile::database::postgres
+#
+# Ensure some database
+#
+ecmf::profile::database::postgres::databases::list:
+  db1:
+    user:     db1_user
+    password: postgressecret
+  db2:
+    user:     db2_user
+    password: postgressecret
+#
+# Ensure some database users/roles
+#
+ecmf::profile::database::postgres::roles::list:
+  user1:
+    password:   user1secret
+  user2:
+    password:   user2secret
+#
+# Grants
+#
+ecmf::profile::database::postgres::grants::list:
+  user1@db1:
+    privilege:   ALL
+  user2@db1:
+    privilege:   ALL
+  user1@db2:
+    privilege:   ALL
+  user2@db2:
+    privilege:   ALL
 ...
