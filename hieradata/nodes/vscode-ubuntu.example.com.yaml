@@ -1,0 +1,12 @@
+---
+role: ecmf::roles::vscode
+install_filename: 'code_1.52.1-1608136922_amd64.deb'
+#
+# use vscode editor implementation
+#
+ecmf::roles::vscode::implementation:     ecmf::profile::vscode::implementation
+ecmf::profile::vscode::tmp_dir: "%{lookup('default_linux_temp')}"
+ecmf::profile::vscode::source_location: "/vagrant/modules/software/files/%{lookup('install_filename')}"
+ecmf::profile::vscode::absolute_path: "%{lookup('ecmf::profile::vscode:tmp_dir')}/%{lookup('install_filename')}"
+ecmf::profile::vscode::linux::provider: 'dpkg'
+...

@@ -1,0 +1,11 @@
+host { 'pemaster.example.com': ip => '192.168.253.10', host_aliases => 'pemaster' }
+host { 'base-windows.example.com': ip => '10.10.10.19', host_aliases => 'base-windows' }
+host { 'base.example.com': ip => '10.10.10.20', host_aliases => 'base' }
+host { 'apache.example.com': ip => '10.10.10.21', host_aliases => 'apache' }
+host { 'ldap.example.com': ip => '10.10.10.22', host_aliases => 'ldap' }
+host { 'mysql.example.com': ip => '10.10.10.23', host_aliases => 'mysql' }
+host { 'postgres.example.com': ip => '10.10.10.24', host_aliases => 'postgres' }
+host { 'nagios.example.com': ip => '10.10.10.25', host_aliases => 'nagios' }
+host { 'zabbix.example.com': ip => '10.10.10.26', host_aliases => 'zabbix' }
+host { 'vscode-windows.example.com': ip => '10.10.10.27', host_aliases => 'vscode-windows' }
+host { 'vscode-ubuntu.example.com': ip => '10.10.10.28', host_aliases => 'vscode-ubuntu' }

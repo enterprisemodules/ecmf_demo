@@ -1,3 +1,6 @@
 ---
 easy_type::generate_password_mode: development
+default_windows_temp: 'C:\tmp'
+default_linux_temp: '/tmp'
+
 ...

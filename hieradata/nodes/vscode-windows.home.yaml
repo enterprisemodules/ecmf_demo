@@ -1,0 +1,12 @@
+---
+role: ecmf::roles::vscode
+install_filename: 'VSCodeUserSetup-x64-1.52.1.exe'
+
+#
+# use vscode editor implementation
+#
+ecmf::roles::vscode::implementation:     ecmf::profile::vscode::implementation
+ecmf::profile::vscode::tmp_dir: "%{lookup('default_windows_temp')}"
+ecmf::profile::vscode::source_location: "C:\\vagrant\\modules\\software\\files\\%{lookup('install_filename')}"
+ecmf::profile::vscode::absolute_path: "%{lookup('ecmf::profile::vscode::tmp_dir')}\\%{lookup('install_filename')}"
+...

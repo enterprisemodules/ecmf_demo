@@ -22,6 +22,7 @@ VALID_KEYS = [
   'virtualboxorafix',
   'needs_storage',
   'custom_facts',
+  'gui'
 ]
 
 class FilesNotFoundError < Vagrant::Errors::VagrantError
@@ -131,14 +132,33 @@ home               = ENV['HOME']
 
 def masterless_setup(config, server, srv, hostname)
   if srv.vm.communicator == 'ssh'
+
     @provisioners << { shell: { inline: facter_overrides(server['custom_facts'], 'linux'),
                                 run: 'always' } } if server['custom_facts']
     @provisioners << { shell: { inline: hosts_file(servers, 'linux') } }
-    @provisioners << { shell: { inline: 'bash /vagrant/vm-scripts/install_puppet.sh' } }
+    if srv.vm.box == 'ubuntu/focal64'
+      @provisioners << { shell: { inline: 'bash /vagrant/vm-scripts/install_puppet_ubuntu.sh' } }
+    else
+      @provisioners << { shell: { inline: 'bash /vagrant/vm-scripts/install_puppet.sh' } }
+    end
     @provisioners << { shell: { inline: 'bash /vagrant/vm-scripts/setup_puppet.sh' } }
+    case server['gui']
+      # when 'gnome'
+      #   @provisioners << { shell: { inline: 'bash /vagrant/vm-scripts/install_gnome.sh' } }
+      #   @provisioners << { shell: { inline: 'service gdm start' } }
+      when 'kde'
+        @provisioners << { shell: { inline: 'bash /vagrant/vm-scripts/install_kde.sh' } }
+        @provisioners << { shell: { inline: 'service gdm3 start' } }
+      when 'xfce4'
+        @provisioners << { shell: { inline: 'bash /vagrant/vm-scripts/install_xfce4.sh' } }
+        @provisioners << { shell: { inline: 'service gdm3 start' } }
+      else
+        # no gui, no action ;)
+    end
     @provisioners << { puppet: { manifests_path: ["vm", "/vagrant/manifests"],
                                  manifest_file: "site.pp",
                                  options: "--test" } }
+
   else
     @provisioners << { shell: { inline: facter_overrides(server['custom_facts'], 'windows'),
                                 run: 'always' } } if server['custom_facts']
@@ -393,7 +413,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           end
         end
       end
-
       srv.vm.communicator = server['protocol'] || 'ssh'
       srv.vm.box          = server['box']
       hostname            = name[3..-1]
