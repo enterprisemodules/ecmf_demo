@@ -1,5 +1,5 @@
 mod 'enterprisemodules-ecmf',
-    :git => 'https://github.com/enterprisemodules/ecmf.git'
+     :git => 'https://github.com/enterprisemodules/ecmf.git'
 
 mod 'enterprisemodules-easy_type'
 mod 'ipcrm-echo'
@@ -12,6 +12,7 @@ mod 'puppetlabs-postgresql'
 mod 'puppetlabs-concat'
 mod 'puppet-firewalld'
 mod 'puppetlabs-firewall'
+mod 'tragiccode-vscode'
 #
 # Modules that are part of the control repo. R10K doesn't need to touch these
 #

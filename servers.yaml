@@ -21,16 +21,27 @@ pe-defaults:
 
 #
 # The settings for the Puppet Enterprise Server
-#  
+#
 pe-pemaster:
   public_ip:       '192.168.253.10'
   cpucount:         2
   ram:              3072
   type:             pe-master
   puppet_installer: puppet-enterprise-2019.1.0-el-7-x86_64/puppet-enterprise-installer
- 
+
 #
 # All masterless nodes
+#
+# Base Windows is a windows only server. No other functionality added
+#
+ml-base-windows:
+  public_ip:        '10.10.10.19'
+  protocol:         winrm
+  box:              mrlesmithjr/windows2019
+  cpucount:         4
+  ram:              8192
+  software_files:
+    - puppet-agent-6.9.0-x64.msi
 #
 # Base is a linux only server. No other functionality added
 #
@@ -73,6 +84,26 @@ ml-nagios:
 ml-zabbix:
   public_ip:        '10.10.10.26'
   software_files:   []
+#
+# Vscode is a windows implementation with vscode
+#
+ml-vscode-windows:
+  public_ip:        '10.10.10.27'
+  protocol:         winrm
+  box:              mrlesmithjr/windows2019
+  cpucount:         4
+  ram:              8192
+  software_files:
+    - puppet-agent-6.9.0-x64.msi
+#
+# Vscode is a ubuntu implementation with vscode
+#
+ml-vscode-ubuntu:
+  public_ip:        '10.10.10.28'
+  box:              ubuntu/focal64
+  gui:              'kde'
+  # software_files:
+  #   - code_1.51.1-1605051630_amd64.deb
 #
 # All PE nodes
 #
